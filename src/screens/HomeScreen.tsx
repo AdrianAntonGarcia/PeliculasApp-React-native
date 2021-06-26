@@ -1,16 +1,17 @@
-import {useNavigation} from '@react-navigation/native';
+import {StackScreenProps} from '@react-navigation/stack';
 import React from 'react';
 import {Button, Text, View} from 'react-native';
 
-export const HomeScreen = () => {
-  const navigation = useNavigation();
+interface Props extends StackScreenProps<any, any> {}
+
+export const HomeScreen = ({navigation: {navigate}}: Props) => {
   return (
     <View>
       <Text>Home Screen</Text>
       <Button
         title="Ir detalle"
         onPress={() => {
-          navigation.navigate('DetailScreen');
+          navigate('DetailScreen');
         }}
       />
     </View>
