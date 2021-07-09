@@ -13,7 +13,7 @@ const {width: windowWidth} = Dimensions.get('window');
 interface Props extends StackScreenProps<any, any> {}
 
 export const HomeScreen = ({navigation: {navigate}}: Props) => {
-  const {peliculasEnCine, isLoading} = useMovies();
+  const {peliculasEnCine, peliculasPopulares, isLoading} = useMovies();
   const {top} = useSafeAreaInsets();
   if (isLoading) {
     return (
@@ -37,7 +37,10 @@ export const HomeScreen = ({navigation: {navigate}}: Props) => {
           />
         </View>
         {/* Películas populares */}
-        <HorizontalSlider movies={peliculasEnCine} title="En cine" />
+        <HorizontalSlider
+          movies={peliculasPopulares}
+          title="Películas Populares"
+        />
       </View>
     </ScrollView>
   );
