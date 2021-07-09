@@ -1,12 +1,9 @@
 module.exports = {
   root: true,
-  extends: '@react-native-community',
+  plugins: ['react'],
+  extends: ['plugin:react/recommended'],
   rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
-    ],
+    'react/jsx-uses-react': 'warn',
+    'react/jsx-uses-vars': 'warn',
   },
 };
