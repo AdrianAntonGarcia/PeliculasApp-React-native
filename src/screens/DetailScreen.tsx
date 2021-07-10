@@ -4,6 +4,7 @@ import {StackScreenProps} from '@react-navigation/stack';
 import {RootStackParams} from '../navigation/Navigation';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useMovieDetails} from '../hooks/useMovieDetails';
 
 const screenHeight = Dimensions.get('screen').height;
 
@@ -13,7 +14,7 @@ export const DetailScreen = ({route, navigation}: Props) => {
   // const movie = route.params as Movie;
   const movie = route.params;
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-
+  const {movieDetails} = useMovieDetails(movie.id);
   return (
     <ScrollView>
       <View style={styles.imageContainer}>
@@ -26,6 +27,7 @@ export const DetailScreen = ({route, navigation}: Props) => {
         <Text style={styles.title}>{movie.title}</Text>
       </View>
       <View style={styles.marginContainer}>
+        <Text>{movieDetails.movieFull?.overview}</Text>
         <Icon name="star-outline" color="grey" size={20} />
       </View>
     </ScrollView>
