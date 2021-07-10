@@ -14,20 +14,19 @@ export const DetailScreen = ({route, navigation}: Props) => {
   // const movie = route.params as Movie;
   const movie = route.params;
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  const {movieDetails} = useMovieDetails(movie.id);
+  const {movieFull, isLoading, cast} = useMovieDetails(movie.id);
+  console.log({cast});
   return (
     <ScrollView>
       <View style={styles.imageContainer}>
-        <View style={styles.imageBorder}>
-          <Image source={{uri}} style={styles.posterImage} />
-        </View>
+        <Image source={{uri}} style={styles.posterImage} />
       </View>
       <View style={styles.marginContainer}>
         <Text style={styles.subTitle}>{movie.original_title}</Text>
         <Text style={styles.title}>{movie.title}</Text>
       </View>
       <View style={styles.marginContainer}>
-        <Text>{movieDetails.movieFull?.overview}</Text>
+        <Text>{movieFull?.overview}</Text>
         <Icon name="star-outline" color="grey" size={20} />
       </View>
     </ScrollView>
@@ -36,7 +35,8 @@ export const DetailScreen = ({route, navigation}: Props) => {
 
 const styles = StyleSheet.create({
   imageContainer: {
-    height: screenHeight * 0.7,
+    flex: 1,
+    height: screenHeight * 0.8,
     width: '100%',
     shadowColor: '#000',
     shadowOffset: {
@@ -49,9 +49,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,
     marginBottom: 15,
-  },
-  imageBorder: {
-    flex: 1,
   },
   posterImage: {
     flex: 1,

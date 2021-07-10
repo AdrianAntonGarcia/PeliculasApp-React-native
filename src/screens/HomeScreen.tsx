@@ -2,7 +2,7 @@ import React from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Carousel from 'react-native-snap-carousel';
-import {ActivityIndicator, View, ScrollView} from 'react-native';
+import {ActivityIndicator, View, ScrollView, Text} from 'react-native';
 import {MoviePoster} from '../components/MoviePoster';
 import {useMovies} from '../hooks/useMovies';
 import {Dimensions} from 'react-native';
@@ -25,6 +25,16 @@ export const HomeScreen = ({navigation: {navigate}}: Props) => {
   return (
     <ScrollView>
       <View style={{marginTop: top + 20}}>
+        <Text
+          style={{
+            flex: 1,
+            fontSize: 30,
+            fontWeight: 'bold',
+            marginHorizontal: 10,
+            marginBottom: 20,
+          }}>
+          Películas en cartelera
+        </Text>
         <View style={{height: 440}}>
           <Carousel
             data={nowPlaying}
