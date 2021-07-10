@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import {MovieDetail, Cast, CastElement} from '../interfaces/movie.interface';
 import Icon from 'react-native-vector-icons/Ionicons';
 import currencyFormatter from 'currency-formatter';
+import {CastItem} from './CastItem';
 
 interface Props {
   movieDetail: MovieDetail;
@@ -34,6 +35,18 @@ export const MovieDetails = ({movieDetail, cast}: Props) => {
         </Text>
       </View>
       {/* Casting */}
+      <View style={{marginTop: 10, marginBottom: 100}}>
+        <Text
+          style={{
+            fontSize: 23,
+            marginTop: 10,
+            fontWeight: 'bold',
+            marginHorizontal: 20,
+          }}>
+          Actores
+        </Text>
+        <CastItem actor={cast[0]} />
+      </View>
     </>
   );
 };
