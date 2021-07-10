@@ -4,14 +4,14 @@ import {MovieDetail, CastElement, Cast} from '../interfaces/movie.interface';
 
 interface MovieDetails {
   cast: CastElement[];
-  movieFull?: MovieDetail;
+  movieDetail?: MovieDetail;
   isLoading: boolean;
 }
 
 export const useMovieDetails = (movieId: number) => {
   const [movieDetails, setMovieDetails] = useState<MovieDetails>({
     cast: [],
-    movieFull: undefined,
+    movieDetail: undefined,
     isLoading: true,
   });
 
@@ -23,7 +23,7 @@ export const useMovieDetails = (movieId: number) => {
 
     setMovieDetails({
       cast: castResponse.data.cast,
-      movieFull: movieDetailResponse.data,
+      movieDetail: movieDetailResponse.data,
       isLoading: false,
     });
   };
