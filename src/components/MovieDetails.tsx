@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {MovieDetail, Cast, CastElement} from '../interfaces/movie.interface';
 import Icon from 'react-native-vector-icons/Ionicons';
+import currencyFormatter from 'currency-formatter';
 
 interface Props {
   movieDetail: MovieDetail;
@@ -19,6 +20,18 @@ export const MovieDetails = ({movieDetail, cast}: Props) => {
             - {movieDetail.genres.map(g => g.name).join(', ')}
           </Text>
         </View>
+        {/* Historia de la película */}
+        <Text style={{fontSize: 23, marginTop: 10, fontWeight: 'bold'}}>
+          Historia
+        </Text>
+        <Text style={{fontSize: 16}}>{movieDetail.overview}</Text>
+        {/* Presupuesto */}
+        <Text style={{fontSize: 23, marginTop: 10, fontWeight: 'bold'}}>
+          Presupuesto
+        </Text>
+        <Text style={{fontSize: 18}}>
+          {currencyFormatter.format(movieDetail.budget, {code: 'USD'})}
+        </Text>
       </View>
       {/* Casting */}
     </>
