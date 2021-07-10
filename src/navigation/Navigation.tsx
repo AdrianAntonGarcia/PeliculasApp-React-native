@@ -19,7 +19,11 @@ export const Navigation = () => {
         cardStyle: {backgroundColor: 'white'},
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="DetailScreen" component={DetailScreen} />
+      <Stack.Screen
+        name="DetailScreen"
+        component={DetailScreen}
+        options={{cardStyle: {backgroundColor: '#f6f6f6'}}}
+      />
     </Stack.Navigator>
   );
 };
