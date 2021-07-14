@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/native';
 import {Navigation} from './src/navigation/Navigation';
 import {useReduxDevToolsExtension} from '@react-navigation/devtools';
+import {FadeScreen} from './src/screens/FadeScreen';
 
 const App = () => {
   const navigationRef = useNavigationContainerRef();
@@ -13,7 +14,8 @@ const App = () => {
   useReduxDevToolsExtension(navigationRef);
   return (
     <NavigationContainer ref={navigationRef}>
-      <Navigation />
+      {/* <Navigation /> */}
+      <FadeScreen />
     </NavigationContainer>
   );
 };
