@@ -20,8 +20,8 @@ export const GradientProvider = ({
   children: JSX.Element | JSX.Element[];
 }) => {
   const [colors, setColors] = useState<ImageColors>({
-    primary: 'red',
-    secondary: 'blue',
+    primary: 'transparent',
+    secondary: 'transparent',
   });
   const [previousColors, setPreviousColors] = useState<ImageColors>({
     primary: 'transparent',
