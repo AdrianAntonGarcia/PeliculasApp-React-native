@@ -14,8 +14,8 @@ const App = () => {
   useReduxDevToolsExtension(navigationRef);
   return (
     <NavigationContainer ref={navigationRef}>
-      {/* <Navigation /> */}
-      <FadeScreen />
+      <Navigation />
+      {/* <FadeScreen /> */}
     </NavigationContainer>
   );
 };

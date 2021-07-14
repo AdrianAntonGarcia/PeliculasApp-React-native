@@ -7,6 +7,7 @@ import {MoviePoster} from '../components/MoviePoster';
 import {useMovies} from '../hooks/useMovies';
 import {Dimensions} from 'react-native';
 import {HorizontalSlider} from '../components/HorizontalSlider';
+import {GradientBackground} from '../components/GradientBackground';
 
 const {width: windowWidth} = Dimensions.get('window');
 
@@ -23,36 +24,41 @@ export const HomeScreen = ({navigation: {navigate}}: Props) => {
     );
   }
   return (
-    <ScrollView>
-      <View style={{marginTop: top + 20}}>
-        <Text
-          style={{
-            flex: 1,
-            fontSize: 30,
-            fontWeight: 'bold',
-            marginHorizontal: 10,
-            marginBottom: 20,
-          }}>
-          Películas en cartelera
-        </Text>
-        <View style={{height: 440}}>
-          <Carousel
-            data={nowPlaying}
-            renderItem={({item}: any) => (
-              <MoviePoster movie={item}></MoviePoster>
-            )}
-            sliderWidth={windowWidth}
-            itemWidth={300}
-            inactiveSlideOpacity={0.92}
+    <GradientBackground>
+      <ScrollView>
+        <View style={{marginTop: top + 20}}>
+          <Text
+            style={{
+              flex: 1,
+              fontSize: 30,
+              fontWeight: 'bold',
+              marginHorizontal: 10,
+              marginBottom: 20,
+            }}>
+            Películas en cartelera
+          </Text>
+          <View style={{height: 440}}>
+            <Carousel
+              data={nowPlaying}
+              renderItem={({item}: any) => (
+                <MoviePoster movie={item}></MoviePoster>
+              )}
+              sliderWidth={windowWidth}
+              itemWidth={300}
+              inactiveSlideOpacity={0.92}
+            />
+          </View>
+          {/* Películas populares */}
+          <HorizontalSlider movies={popular} title="Películas Populares" />
+          {/* Películas top rated */}
+          <HorizontalSlider
+            movies={topRated}
+            title="Películas Mejor Valoradas"
           />
+          {/* Películas próximas */}
+          <HorizontalSlider movies={upcoming} title="Próximas Películas" />
         </View>
-        {/* Películas populares */}
-        <HorizontalSlider movies={popular} title="Películas Populares" />
-        {/* Películas top rated */}
-        <HorizontalSlider movies={topRated} title="Películas Mejor Valoradas" />
-        {/* Películas próximas */}
-        <HorizontalSlider movies={upcoming} title="Próximas Películas" />
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </GradientBackground>
   );
 };
