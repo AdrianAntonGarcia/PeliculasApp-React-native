@@ -7,6 +7,11 @@ import {
 import {Navigation} from './src/navigation/Navigation';
 import {useReduxDevToolsExtension} from '@react-navigation/devtools';
 import {FadeScreen} from './src/screens/FadeScreen';
+import {GradientProvider} from './src/context/GradientContext';
+
+const AppState = ({children}: {children: JSX.Element | JSX.Element[]}) => {
+  return <GradientProvider>{children}</GradientProvider>;
+};
 
 const App = () => {
   const navigationRef = useNavigationContainerRef();
@@ -14,8 +19,10 @@ const App = () => {
   useReduxDevToolsExtension(navigationRef);
   return (
     <NavigationContainer ref={navigationRef}>
-      <Navigation />
-      {/* <FadeScreen /> */}
+      <AppState>
+        <Navigation />
+        {/* <FadeScreen /> */}
+      </AppState>
     </NavigationContainer>
   );
 };
